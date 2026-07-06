@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        🛠 Admin Dashboard
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-primary mb-4 shadow">
+
+                <div class="card-body">
+
+                    <h5>Total Users</h5>
+
+                    <h2>{{ total_users }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-success mb-4 shadow">
+
+                <div class="card-body">
+
+                    <h5>Real News</h5>
+
+                    <h2>{{ real_count }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-danger mb-4 shadow">
+
+                <div class="card-body">
+
+                    <h5>Fake News</h5>
+
+                    <h2>{{ fake_count }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-dark mb-4 shadow">
+
+                <div class="card-body">
+
+                    <h5>Total Predictions</h5>
+
+                    <h2>{{ total_predictions }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h5>User Management</h5>
+
+                    <p>
+                        View, search and delete users.
+                    </p>
+
+                    <a href="/admin/users"
+                       class="btn btn-primary w-100">
+
+                        Manage Users
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h5>Prediction History</h5>
+
+                    <p>
+                        View all prediction records.
+                    </p>
+
+                    <a href="/admin/history"
+                       class="btn btn-success w-100">
+
+                        View History
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h5>Logout</h5>
+
+                    <p>
+                        End the current admin session.
+                    </p>
+
+                    <a href="/admin/logout"
+                       class="btn btn-danger w-100">
+
+                        Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr class="my-5">
+
+    <div class="card shadow">
+
+        <div class="card-header">
+
+            <h4>System Statistics</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <canvas id="statsChart"
+                    height="120">
+
+            </canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('statsChart');
+
+new Chart(ctx,{
+
+type:'bar',
+
+data:{
+
+labels:['Users','Predictions','Real','Fake'],
+
+datasets:[{
+
+label:'Statistics',
+
+data:[
+
+{{ total_users }},
+
+{{ total_predictions }},
+
+{{ real_count }},
+
+{{ fake_count }}
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+{% endblock %}
