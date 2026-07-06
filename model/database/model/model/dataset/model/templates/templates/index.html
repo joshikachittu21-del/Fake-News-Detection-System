@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h2 class="text-center mb-4">
+
+Fake News Detection
+
+</h2>
+
+<form action="/predict" method="POST">
+
+<div class="mb-3">
+
+<textarea
+class="form-control"
+name="news"
+rows="8"
+placeholder="Paste News Article Here..."
+required>{{ news if news else "" }}</textarea>
+
+</div>
+
+<div class="text-center">
+
+<button class="btn btn-primary">
+
+Check News
+
+</button>
+
+</div>
+
+</form>
+
+{% if prediction %}
+
+<div class="alert alert-info mt-4">
+
+<h4>{{ prediction }}</h4>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endblock %}
