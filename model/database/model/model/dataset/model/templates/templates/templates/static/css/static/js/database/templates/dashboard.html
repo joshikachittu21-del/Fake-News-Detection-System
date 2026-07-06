@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+Dashboard
+</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card text-center">
+
+<div class="card-body">
+
+<h3>{{ total }}</h3>
+
+<p>Total Predictions</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card text-center">
+
+<div class="card-body">
+
+<h3>{{ real }}</h3>
+
+<p>Real News</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card text-center">
+
+<div class="card-body">
+
+<h3>{{ fake }}</h3>
+
+<p>Fake News</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="mt-4">
+
+<a href="/history" class="btn btn-primary">
+
+View Prediction History
+
+</a>
+
+</div>
+
+{% endblock %}
